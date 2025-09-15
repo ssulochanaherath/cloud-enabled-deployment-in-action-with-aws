@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-
 public class MediaServiceApplication implements WebMvcConfigurer {
     @Value("${media.storage.dir}")
     private String mediaStorageDir;
