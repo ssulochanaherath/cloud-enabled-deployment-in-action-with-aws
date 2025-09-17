@@ -1,52 +1,80 @@
-# Cloud Enabled Deployment In Action with AWS
+# Cloud-Enabled Deployment with AWS
 
-This repository contains four projects:
+This repository demonstrates a cloud-enabled application setup with multiple backend services and a React frontend. All projects are designed to be deployed on AWS.
 
-- course-service (Spring Boot + MySQL)
-- student-service (Spring Boot + MongoDB)
-- media-service (Spring Boot + Local file storage, can be extended to S3/MinIO)
-- frontend-app (React + TypeScript)
+## Project Overview
+
+- **course-service** → Spring Boot with MySQL
+- **student-service** → Spring Boot with MongoDB
+- **media-service** → Spring Boot file service (uses local storage by default but can be extended to S3 or MinIO)
+- **frontend-app** → React application built with TypeScript, Material UI, Axios, and Vite
+
+---
 
 ## Backend Services
 
-### 1. course-service
-- Entity: Course(id, name, duration)
+### 1. Course Service
+- Entity: Course (id, name, duration)
 - Endpoints:
-  - GET /courses
-  - GET /courses/{id}
-  - POST /courses
-  - DELETE /courses/{id}
-- Default port: 8081
-- Configure MySQL settings
+  - Get all courses
+  - Get a course by ID
+  - Add a new course
+  - Delete a course
+- Runs on port 8081
+- Requires MySQL configuration
 
-### 2. student-service
-- Document: Student(registrationNumber, fullName, address, contact, email)
+---
+
+### 2. Student Service
+- Document: Student (registration number, full name, address, contact, email)
 - Endpoints:
-  - GET /students
-  - GET /students/{id}
-  - POST /students
-  - DELETE /students/{id}
-- Default port: 8082
-- Configure MongoDB settings
+  - Get all students
+  - Get a student by ID
+  - Add a new student
+  - Delete a student
+- Runs on port 8082
+- Requires MongoDB configuration
 
-### 3. media-service
-- Resource: files
+---
+
+### 3. Media Service
+- Handles file storage and management
 - Endpoints:
-  - POST /files (multipart/form-data: file)
-  - GET /files (list)
-  - GET /files/{id} (fetch)
-  - DELETE /files/{id} (delete)
-- Default port: 8083
-- Uses local disk storage at `./data/media` by default (override with env var `MEDIA_STORAGE_DIR`).
+  - Upload a file
+  - List all uploaded files
+  - Download a file
+  - Delete a file
+- Runs on port 8083
+- Stores files at `./data/media` by default (can be changed with the `MEDIA_STORAGE_DIR` environment variable)
 
-## Frontend (frontend-app)
-- React + TypeScript + MUI + Axios + Vite app with 3 sections: Courses, Students, Media
-- Scripts:
-  - npm run dev (Vite dev server)
-  - npm run build (TypeScript build + Vite build)
-  - npm run preview (Preview built app)
+---
 
-## Build
+## Frontend Application
 
-- Backend: run `mvn -q -e -DskipTests package` at repo root to build services.
-- Frontend: run `npm install` then `npm run dev` inside `frontend-app`.
+The frontend is developed with React and TypeScript, styled using Material UI, and communicates with backend services using Axios. Vite is used as the build tool.
+
+It provides three main sections:
+- Courses
+- Students
+- Media
+
+Available scripts:
+- Run the development server
+- Build for production
+- Preview the production build
+
+---
+
+## Build Instructions
+
+- To build the backend services, run a Maven build at the project root with tests skipped.
+- To start the frontend, first install dependencies using npm, then run the development server.
+- To prepare the frontend for production, run the build command, and to preview the production build, run the preview script.
+
+---
+
+## Demo
+
+🎥 [Watch the sample screen recording](https://drive.google.com/file/d/1wI0RxUEJIfPWP8RpiC68FmDPuamIcM1h/view?usp=sharing)
+
+---
